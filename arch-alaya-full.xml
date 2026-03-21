@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1600" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- ============================================================ -->
+    <!-- TITLE -->
+    <!-- ============================================================ -->
+    <mxCell id="title" value="j13 Alaya Stack — Full Architecture 2026-03-21" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="600" y="20" width="900" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!-- MAC MINI (LOCAL) -->
+    <!-- ============================================================ -->
+    <mxCell id="mac_bg" value="Mac Mini (Local)" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="40" y="80" width="320" height="340" as="geometry" />
+    </mxCell>
+
+    <mxCell id="dmail" value="&lt;b&gt;d-mail&lt;/b&gt;&lt;br&gt;launchd service&lt;br&gt;—&lt;br&gt;Telegram → Claude Code bridge&lt;br&gt;Invokes: claude -p &lt;prompt&gt;&lt;br&gt;Receives: Telegram updates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="mac_bg">
+      <mxGeometry x="20" y="50" width="270" height="110" as="geometry" />
+    </mxCell>
+
+    <mxCell id="gembot" value="&lt;b&gt;gemini-bot&lt;/b&gt;&lt;br&gt;launchd service&lt;br&gt;—&lt;br&gt;@Geminialayabot&lt;br&gt;Calls: gemini CLI subprocess&lt;br&gt;Model: gemini-2.x" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="mac_bg">
+      <mxGeometry x="20" y="180" width="270" height="110" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!-- ALAYA SERVER -->
+    <!-- ============================================================ -->
+    <mxCell id="alaya_bg" value="Alaya Server  —  Ubuntu 24.04 LTS  |  i7-12700K (20T)  |  RTX 3080 12GB  |  32GB RAM  |  915GB NVMe" style="swimlane;startSize=35;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+      <mxGeometry x="400" y="80" width="1760" height="1460" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!-- ZANGETSU STACK -->
+    <!-- ============================================================ -->
+    <mxCell id="zan_bg" value="docker network: deploy_zangetsu_net" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="alaya_bg">
+      <mxGeometry x="20" y="50" width="1060" height="800" as="geometry" />
+    </mxCell>
+
+    <!-- PostgreSQL -->
+    <mxCell id="pg" value="&lt;b&gt;deploy-postgres-1&lt;/b&gt;&lt;br&gt;pgvector/pgvector:pg15&lt;br&gt;Status: healthy  Uptime: 44h&lt;br&gt;—&lt;br&gt;📊 ohlcv_1m: 777,603 rows&lt;br&gt;BTC/ETH/SOL 2025-09-21→now&lt;br&gt;regime: ALL 'unknown' ⚠️&lt;br&gt;—&lt;br&gt;🏆 champions: 420 rows&lt;br&gt;ELO 1618–1633, avg_score 2.2–2.7&lt;br&gt;—&lt;br&gt;📝 execution_log: 52 rows&lt;br&gt;27 BUY / 25 SELL&lt;br&gt;pnl_bps: ALL NULL ⚠️&lt;br&gt;—&lt;br&gt;🎯 valkyrie_audit: 0 rows ⚠️&lt;br&gt;validation_gates: 0 rows ⚠️&lt;br&gt;regime_vectors: 0 rows ⚠️&lt;br&gt;—&lt;br&gt;Other: tournament_runs(423)&lt;br&gt;live_elo, echelon_state, etc." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;verticalAlign=top;" vertex="1" parent="zan_bg">
+      <mxGeometry x="380" y="50" width="240" height="370" as="geometry" />
+    </mxCell>
+
+    <!-- deploy-trader-1 -->
+    <mxCell id="trader" value="&lt;b&gt;deploy-trader-1&lt;/b&gt;&lt;br&gt;Image: deploy-trader (local)&lt;br&gt;Status: healthy  Uptime: 23h&lt;br&gt;—&lt;br&gt;paper_trader.py&lt;br&gt;Mode: PAPER (Binance BTC/USDT)&lt;br&gt;ccxt library&lt;br&gt;—&lt;br&gt;Signal confidence: 0.38–0.95&lt;br&gt;Regime detection: working&lt;br&gt;(bull_trend, consolidation, etc.)&lt;br&gt;—&lt;br&gt;Env: REDIS_URL set (unused)&lt;br&gt;Env: POOL_DATABASE_URL ✓&lt;br&gt;—&lt;br&gt;⚠️ pnl_bps never computed&lt;br&gt;⚠️ github_sync: no GH_TOKEN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;verticalAlign=top;" vertex="1" parent="zan_bg">
+      <mxGeometry x="20" y="50" width="210" height="290" as="geometry" />
+    </mxCell>
+
+    <!-- deploy-ml_core-1 -->
+    <mxCell id="mlcore" value="&lt;b&gt;deploy-ml_core-1&lt;/b&gt;&lt;br&gt;Image: deploy-ml_core (local)&lt;br&gt;Status: healthy  Uptime: 21h&lt;br&gt;CPU: 285%  RAM: 2.7GB&lt;br&gt;—&lt;br&gt;🔄 ACTIVE: feature_tournament.py&lt;br&gt;LightGBM genetic tournament&lt;br&gt;CPU-only (no GPU)&lt;br&gt;MCC scoring + ELO ranking&lt;br&gt;—&lt;br&gt;data_ingestion.py (30min loop)&lt;br&gt;ingest_all() ✓&lt;br&gt;classify_regimes() ⚠️ FAILING&lt;br&gt;—&lt;br&gt;valkyrie.py: EXISTS but&lt;br&gt;NEVER INVOKED&lt;br&gt;—&lt;br&gt;meta_runner.py&lt;br&gt;indicator_engine.py&lt;br&gt;leverage_controller.py" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;verticalAlign=top;" vertex="1" parent="zan_bg">
+      <mxGeometry x="20" y="370" width="210" height="290" as="geometry" />
+    </mxCell>
+
+    <!-- deploy-dashboard-1 -->
+    <mxCell id="dash_c" value="&lt;b&gt;deploy-dashboard-1&lt;/b&gt;&lt;br&gt;Image: deploy-dashboard (local)&lt;br&gt;Status: healthy  Uptime: 44h&lt;br&gt;—&lt;br&gt;Port: 8080 → 0.0.0.0&lt;br&gt;⚠️ INTERNET EXPOSED&lt;br&gt;—&lt;br&gt;Trading dashboard UI&lt;br&gt;Reads from PostgreSQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;verticalAlign=top;" vertex="1" parent="zan_bg">
+      <mxGeometry x="660" y="50" width="200" height="180" as="geometry" />
+    </mxCell>
+
+    <!-- deploy-redis-1 -->
+    <mxCell id="redis_d" value="&lt;b&gt;deploy-redis-1&lt;/b&gt;&lt;br&gt;redis:7-alpine&lt;br&gt;Status: healthy  Uptime: 44h&lt;br&gt;—&lt;br&gt;❌ COMPLETELY UNUSED&lt;br&gt;Zero zangetsu imports&lt;br&gt;REDIS_URL set in trader env&lt;br&gt;but never accessed&lt;br&gt;—&lt;br&gt;Recommendation: REMOVE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;verticalAlign=top;" vertex="1" parent="zan_bg">
+      <mxGeometry x="660" y="260" width="200" height="180" as="geometry" />
+    </mxCell>
+
+    <!-- echelon -->
+    <mxCell id="echelon" value="&lt;b&gt;echelon&lt;/b&gt;&lt;br&gt;Image: echelon-echelon (local)&lt;br&gt;Status: healthy  Uptime: 6m&lt;br&gt;—&lt;br&gt;Polls execution_log every 15s&lt;br&gt;High-water mark: last_seen_id=51&lt;br&gt;—&lt;br&gt;⚠️ TELEGRAM BROKEN&lt;br&gt;All thread IDs return 400&lt;br&gt;&quot;thread not found&quot;&lt;br&gt;—&lt;br&gt;Fix ready: send_telegram()&lt;br&gt;with thread fallback to main chat&lt;br&gt;Awaiting SCP + rebuild" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;verticalAlign=top;" vertex="1" parent="zan_bg">
+      <mxGeometry x="660" y="470" width="200" height="230" as="geometry" />
+    </mxCell>
+
+    <!-- valkyrie note -->
+    <mxCell id="val_note" value="&lt;b&gt;valkyrie.py&lt;/b&gt; (inside ml_core + trader)&lt;br&gt;L4: Cross-asset generalization (OOU symbols: LINK/ADA/NEAR)&lt;br&gt;L5: Monte Carlo permutation + Purged CPCV (N=6, k=2, 15 paths)&lt;br&gt;Status: CODE EXISTS — NEVER INVOKED IN PRODUCTION&lt;br&gt;validation_audit table: 0 rows" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="zan_bg">
+      <mxGeometry x="20" y="690" width="820" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!-- MAGI STACK -->
+    <!-- ============================================================ -->
+    <mxCell id="magi_bg" value="docker network: magi_default" style="swimlane;startSize=30;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;" vertex="1" parent="alaya_bg">
+      <mxGeometry x="1100" y="50" width="640" height="430" as="geometry" />
+    </mxCell>
+
+    <mxCell id="litellm" value="&lt;b&gt;magi-litellm-1&lt;/b&gt;&lt;br&gt;ghcr.io/berriai/litellm:main-latest&lt;br&gt;Uptime: 18h&lt;br&gt;—&lt;br&gt;Port: 4000 → 0.0.0.0&lt;br&gt;⚠️ INTERNET EXPOSED&lt;br&gt;⚠️ master_key known&lt;br&gt;—&lt;br&gt;Routes:&lt;br&gt;claude-sonnet-4-6 → Anthropic&lt;br&gt;claude-opus-4-6 → Anthropic&lt;br&gt;claude-haiku-4-5 → Anthropic&lt;br&gt;—&lt;br&gt;Config: litellm_config.yaml&lt;br&gt;(version-controlled in j13-ops)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;verticalAlign=top;" vertex="1" parent="magi_bg">
+      <mxGeometry x="20" y="50" width="220" height="300" as="geometry" />
+    </mxCell>
+
+    <mxCell id="redis_m" value="&lt;b&gt;magi-redis-1&lt;/b&gt;&lt;br&gt;redis:7-alpine&lt;br&gt;Uptime: 44h&lt;br&gt;—&lt;br&gt;LiteLLM session cache&lt;br&gt;Internal only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;verticalAlign=top;" vertex="1" parent="magi_bg">
+      <mxGeometry x="380" y="50" width="220" height="140" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!-- SYSTEMD SERVICES -->
+    <!-- ============================================================ -->
+    <mxCell id="sysd_bg" value="systemd services (host)" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;" vertex="1" parent="alaya_bg">
+      <mxGeometry x="20" y="880" width="1720" height="380" as="geometry" />
+    </mxCell>
+
+    <mxCell id="local_llm" value="&lt;b&gt;local-llm.service&lt;/b&gt;&lt;br&gt;ACTIVE since 2026-03-20&lt;br&gt;—&lt;br&gt;llama-server (llama.cpp)&lt;br&gt;Model: Qwen2.5-Coder-14B&lt;br&gt;Quant: Q4_K_M (.gguf)&lt;br&gt;Port: 8001 (127.0.0.1 ✓)&lt;br&gt;—&lt;br&gt;VRAM: 10,311 / 12,288 MiB (84%)&lt;br&gt;Power: 19.84W idle / 390W max&lt;br&gt;--ctx-size 8192&lt;br&gt;--n-gpu-layers 99&lt;br&gt;--parallel 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;verticalAlign=top;" vertex="1" parent="sysd_bg">
+      <mxGeometry x="20" y="50" width="210" height="290" as="geometry" />
+    </mxCell>
+
+    <mxCell id="local_queue" value="&lt;b&gt;local-queue.service&lt;/b&gt;&lt;br&gt;ACTIVE since 2026-03-20&lt;br&gt;RAM: 1.8MB&lt;br&gt;—&lt;br&gt;Bash daemon&lt;br&gt;inotifywait on:&lt;br&gt;~/.claude/scratch/queue/qwen/&lt;br&gt;~/.claude/scratch/queue/deepseek/&lt;br&gt;—&lt;br&gt;On file drop → HTTP to :8001&lt;br&gt;Writes response to file" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;verticalAlign=top;" vertex="1" parent="sysd_bg">
+      <mxGeometry x="250" y="50" width="200" height="220" as="geometry" />
+    </mxCell>
+
+    <mxCell id="dashboard_svc" value="&lt;b&gt;dashboard.service&lt;/b&gt;&lt;br&gt;ACTIVE since 2026-03-19&lt;br&gt;RAM: 45.7MB&lt;br&gt;—&lt;br&gt;Python FastAPI / Jinja2&lt;br&gt;~/dashboard/main.py (432 LOC)&lt;br&gt;Port: 8080 (0.0.0.0 ⚠️)&lt;br&gt;—&lt;br&gt;Alaya command center&lt;br&gt;Reads PostgreSQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;verticalAlign=top;" vertex="1" parent="sysd_bg">
+      <mxGeometry x="470" y="50" width="200" height="210" as="geometry" />
+    </mxCell>
+
+    <mxCell id="miniapp_svc" value="&lt;b&gt;miniapp.service&lt;/b&gt;&lt;br&gt;ACTIVE since 2026-03-19&lt;br&gt;RAM: 44.5MB&lt;br&gt;—&lt;br&gt;FastAPI / uvicorn&lt;br&gt;~/miniapp/main.py (65 LOC)&lt;br&gt;Port: 7700 (0.0.0.0)&lt;br&gt;—&lt;br&gt;⚠️ BROKEN&lt;br&gt;Queries 'strategies' table&lt;br&gt;(Railway schema — doesn't exist)&lt;br&gt;Every API call returns 500" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;verticalAlign=top;" vertex="1" parent="sysd_bg">
+      <mxGeometry x="690" y="50" width="200" height="230" as="geometry" />
+    </mxCell>
+
+    <mxCell id="agent_svc" value="&lt;b&gt;alaya-agent.service&lt;/b&gt;&lt;br&gt;❌ DEAD since 2026-03-20 16:14&lt;br&gt;Offline: 10h+&lt;br&gt;—&lt;br&gt;Python telegram-bot&lt;br&gt;~/agent/agent.py (876 LOC)&lt;br&gt;~/agent/bot.py (181 LOC)&lt;br&gt;—&lt;br&gt;Planner + Executor pattern&lt;br&gt;Uses Qwen via local-queue&lt;br&gt;Uses LiteLLM for planning&lt;br&gt;—&lt;br&gt;No watchdog configured&lt;br&gt;No restart policy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;verticalAlign=top;" vertex="1" parent="sysd_bg">
+      <mxGeometry x="910" y="50" width="200" height="290" as="geometry" />
+    </mxCell>
+
+    <mxCell id="orphans" value="&lt;b&gt;ORPHAN services (4x)&lt;/b&gt;&lt;br&gt;All INACTIVE (disabled)&lt;br&gt;—&lt;br&gt;amadeus.service&lt;br&gt;king-crimson.service&lt;br&gt;r-steiner.service&lt;br&gt;dcbot.service&lt;br&gt;—&lt;br&gt;Unit files exist in systemd&lt;br&gt;Source in ~/projects/ (DELETED)&lt;br&gt;Cannot start — source missing&lt;br&gt;—&lt;br&gt;Action: remove unit files (sudo)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;verticalAlign=top;" vertex="1" parent="sysd_bg">
+      <mxGeometry x="1130" y="50" width="200" height="270" as="geometry" />
+    </mxCell>
+
+    <mxCell id="portainer_svc" value="&lt;b&gt;portainer&lt;/b&gt;&lt;br&gt;portainer-ce:latest&lt;br&gt;Uptime: 44h&lt;br&gt;—&lt;br&gt;Docker management UI&lt;br&gt;Port: 9000 → 0.0.0.0&lt;br&gt;⚠️ INTERNET EXPOSED&lt;br&gt;CRITICAL RISK&lt;br&gt;Full Docker control&lt;br&gt;from internet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;verticalAlign=top;" vertex="1" parent="sysd_bg">
+      <mxGeometry x="1350" y="50" width="190" height="200" as="geometry" />
+    </mxCell>
+
+    <mxCell id="watchdog_svc" value="&lt;b&gt;network-watchdog.service&lt;/b&gt;&lt;br&gt;ACTIVE&lt;br&gt;—&lt;br&gt;Network connectivity monitor&lt;br&gt;Restarts network on failure" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;verticalAlign=top;" vertex="1" parent="sysd_bg">
+      <mxGeometry x="1560" y="50" width="140" height="130" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!-- OBSERVABILITY STACK -->
+    <!-- ============================================================ -->
+    <mxCell id="obs_bg" value="docker network: obs (observability)" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" vertex="1" parent="alaya_bg">
+      <mxGeometry x="20" y="500" width="1060" height="350" as="geometry" />
+    </mxCell>
+
+    <mxCell id="prometheus" value="&lt;b&gt;obs-prometheus&lt;/b&gt;&lt;br&gt;prom/prometheus:v3.2.1&lt;br&gt;Port: 9090 (127.0.0.1 ✓)&lt;br&gt;—&lt;br&gt;Alert rules: 5&lt;br&gt;(HighCPU/RAM/Disk/&lt;br&gt;ContainerDown/OOM)&lt;br&gt;Scrape interval: 15s&lt;br&gt;Targets: cadvisor, node-exp&lt;br&gt;(qwen + dashboard: REMOVED)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;verticalAlign=top;" vertex="1" parent="obs_bg">
+      <mxGeometry x="20" y="50" width="190" height="230" as="geometry" />
+    </mxCell>
+
+    <mxCell id="grafana" value="&lt;b&gt;obs-grafana&lt;/b&gt;&lt;br&gt;grafana/grafana:11.5.2&lt;br&gt;Port: 3000 (127.0.0.1 ✓)&lt;br&gt;—&lt;br&gt;Data sources:&lt;br&gt;Prometheus (metrics)&lt;br&gt;Loki (logs)&lt;br&gt;—&lt;br&gt;No distributed traces&lt;br&gt;(Tempo not deployed)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;verticalAlign=top;" vertex="1" parent="obs_bg">
+      <mxGeometry x="230" y="50" width="180" height="210" as="geometry" />
+    </mxCell>
+
+    <mxCell id="loki" value="&lt;b&gt;obs-loki&lt;/b&gt;&lt;br&gt;grafana/loki:3.4.2&lt;br&gt;Port: 3100 (127.0.0.1 ✓)&lt;br&gt;—&lt;br&gt;Log aggregation&lt;br&gt;Query: LogQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;verticalAlign=top;" vertex="1" parent="obs_bg">
+      <mxGeometry x="430" y="50" width="160" height="150" as="geometry" />
+    </mxCell>
+
+    <mxCell id="promtail" value="&lt;b&gt;obs-promtail&lt;/b&gt;&lt;br&gt;grafana/promtail:3.4.2&lt;br&gt;—&lt;br&gt;Scrapes Docker logs&lt;br&gt;Sends to Loki" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;verticalAlign=top;" vertex="1" parent="obs_bg">
+      <mxGeometry x="610" y="50" width="160" height="130" as="geometry" />
+    </mxCell>
+
+    <mxCell id="cadvisor" value="&lt;b&gt;obs-cadvisor&lt;/b&gt;&lt;br&gt;cadvisor:v0.52.0&lt;br&gt;Status: healthy&lt;br&gt;—&lt;br&gt;Container CPU/RAM/net&lt;br&gt;Exposes /metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;verticalAlign=top;" vertex="1" parent="obs_bg">
+      <mxGeometry x="790" y="50" width="160" height="150" as="geometry" />
+    </mxCell>
+
+    <mxCell id="nodeexp" value="&lt;b&gt;obs-node-exporter&lt;/b&gt;&lt;br&gt;node-exporter:v1.9.0&lt;br&gt;—&lt;br&gt;Host OS metrics&lt;br&gt;CPU/Mem/Disk/Net" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;verticalAlign=top;" vertex="1" parent="obs_bg">
+      <mxGeometry x="870" y="220" width="160" height="110" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!-- GITHUB -->
+    <!-- ============================================================ -->
+    <mxCell id="github_bg" value="GitHub (M116cj)" style="swimlane;startSize=30;fillColor=#333333;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=12;" vertex="1" parent="alaya_bg">
+      <mxGeometry x="1100" y="500" width="640" height="350" as="geometry" />
+    </mxCell>
+
+    <mxCell id="gh_repos" value="&lt;b&gt;7 Repos (NOT 28)&lt;/b&gt;&lt;br&gt;—&lt;br&gt;j13-ops (HTML) 2026-03-18&lt;br&gt;qbeyer-models 2026-03-17&lt;br&gt;winiswin2 (Python) 2026-03-10&lt;br&gt;everychance_i_get (Python) 03-08&lt;br&gt;winiswin (Python) 03-08&lt;br&gt;CodeSnippets (CSS) 03-08&lt;br&gt;quant-trading (Python) 03-08&lt;br&gt;—&lt;br&gt;❌ zangetsu: NOT on GitHub&lt;br&gt;Source only in Docker images" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#666666;strokeColor=#000000;fontColor=#ffffff;fontSize=10;verticalAlign=top;" vertex="1" parent="github_bg">
+      <mxGeometry x="20" y="50" width="590" height="270" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!-- EXTERNAL SERVICES -->
+    <!-- ============================================================ -->
+    <mxCell id="ext_bg" value="External APIs" style="swimlane;startSize=30;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;" vertex="1" parent="alaya_bg">
+      <mxGeometry x="1100" y="870" width="640" height="380" as="geometry" />
+    </mxCell>
+
+    <mxCell id="binance" value="&lt;b&gt;Binance API&lt;/b&gt;&lt;br&gt;Mode: PAPER TRADE&lt;br&gt;Pair: BTC/USDT&lt;br&gt;Library: ccxt&lt;br&gt;—&lt;br&gt;Rate limit: handled by ccxt&lt;br&gt;No real funds at risk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;verticalAlign=top;" vertex="1" parent="ext_bg">
+      <mxGeometry x="20" y="50" width="170" height="170" as="geometry" />
+    </mxCell>
+
+    <mxCell id="telegram" value="&lt;b&gt;Telegram Bot API&lt;/b&gt;&lt;br&gt;@Alaya13jbot&lt;br&gt;Chat: -1003601437444&lt;br&gt;Thread: 12&lt;br&gt;—&lt;br&gt;echelon → signals ⚠️BROKEN&lt;br&gt;alaya-agent → commands ❌DEAD&lt;br&gt;d-mail → Claude Code&lt;br&gt;—&lt;br&gt;is_forum: true&lt;br&gt;Thread IDs: all return 400" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;verticalAlign=top;" vertex="1" parent="ext_bg">
+      <mxGeometry x="210" y="50" width="180" height="220" as="geometry" />
+    </mxCell>
+
+    <mxCell id="anthropic_ext" value="&lt;b&gt;Anthropic API&lt;/b&gt;&lt;br&gt;Via LiteLLM proxy&lt;br&gt;—&lt;br&gt;claude-sonnet-4-6&lt;br&gt;$3/$15 per 1M tokens&lt;br&gt;claude-opus-4-6&lt;br&gt;$5/$25 per 1M tokens&lt;br&gt;claude-haiku-4-5&lt;br&gt;$1/$5 per 1M tokens&lt;br&gt;—&lt;br&gt;Est. cost: ~$32/month" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;verticalAlign=top;" vertex="1" parent="ext_bg">
+      <mxGeometry x="410" y="50" width="180" height="230" as="geometry" />
+    </mxCell>
+
+    <mxCell id="xai_ext" value="&lt;b&gt;xAI Grok API&lt;/b&gt;&lt;br&gt;@Geminialayabot (grok-bot)&lt;br&gt;—&lt;br&gt;grok-4-1-fast&lt;br&gt;$0.20/$0.50 per 1M tokens&lt;br&gt;—&lt;br&gt;Est. cost: &lt;$1/month" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;verticalAlign=top;" vertex="1" parent="ext_bg">
+      <mxGeometry x="20" y="240" width="180" height="120" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!-- DATA FLOW ARROWS -->
+    <!-- ============================================================ -->
+
+    <!-- trader → postgres (signals) -->
+    <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.3;strokeColor=#82b366;strokeWidth=2;" edge="1" parent="zan_bg" source="trader" target="pg">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e1_lbl" value="INSERT signals" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="e1">
+      <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+    </mxCell>
+
+    <!-- mlcore → postgres (champions) -->
+    <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.6;strokeColor=#82b366;strokeWidth=2;" edge="1" parent="zan_bg" source="mlcore" target="pg">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e2_lbl" value="UPDATE champions/ELO" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="e2">
+      <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+    </mxCell>
+
+    <!-- postgres → echelon (poll) -->
+    <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.8;entryX=0;entryY=0.3;strokeColor=#d79b00;strokeWidth=2;dashed=1;" edge="1" parent="zan_bg" source="pg" target="echelon">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e3_lbl" value="POLL every 15s" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="e3">
+      <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+    </mxCell>
+
+    <!-- postgres → trader (reads champions) -->
+    <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0;exitY=0.5;entryX=1;entryY=0.7;strokeColor=#82b366;strokeWidth=1;dashed=1;" edge="1" parent="zan_bg" source="pg" target="trader">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e4_lbl" value="READ champion specs" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="e4">
+      <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+    </mxCell>
+
+    <!-- litellm → redis_m -->
+    <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9673a6;strokeWidth=1;" edge="1" parent="magi_bg" source="litellm" target="redis_m">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e5_lbl" value="session cache" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="e5">
+      <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+    </mxCell>
+
+    <!-- promtail → loki -->
+    <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=1;" edge="1" parent="obs_bg" source="promtail" target="loki">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- cadvisor → prometheus -->
+    <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=1;" edge="1" parent="obs_bg" source="cadvisor" target="prometheus">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- nodeexp → prometheus -->
+    <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=1;" edge="1" parent="obs_bg" source="nodeexp" target="prometheus">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- prometheus → grafana -->
+    <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=1;" edge="1" parent="obs_bg" source="prometheus" target="grafana">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- loki → grafana -->
+    <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=1;" edge="1" parent="obs_bg" source="loki" target="grafana">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- CROSS-BOUNDARY ARROWS (within alaya_bg) -->
+
+    <!-- echelon → Telegram (broken) -->
+    <mxCell id="e_ech_tg" value="⚠️ BROKEN (thread 400)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#d79b00;strokeWidth=2;dashed=1;entryX=0;entryY=0.5;exitX=1;exitY=0.7;" edge="1" parent="alaya_bg">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1090" y="620" />
+          <mxPoint x="1090" y="1140" />
+          <mxPoint x="1310" y="1140" />
+        </Array>
+      </mxGeometry>
+      <mxCell style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="e_ech_tg">
+        <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+      </mxCell>
+    </mxCell>
+
+    <!-- local_llm ← local_queue -->
+    <mxCell id="e_queue_llm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#d6b656;strokeWidth=2;" edge="1" parent="alaya_bg" source="local_queue" target="local_llm">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_queue_lbl" value="HTTP :8001" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="e_queue_llm">
+      <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+    </mxCell>
+
+    <!-- litellm → anthropic -->
+    <mxCell id="e_lit_ant" value="API calls" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9673a6;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="alaya_bg" source="litellm" target="anthropic_ext">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- trader → binance -->
+    <mxCell id="e_trader_bnc" value="paper trade" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#82b366;strokeWidth=2;" edge="1" parent="alaya_bg" source="trader" target="binance">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!-- INTERNET EXPOSURE WARNING BOX -->
+    <!-- ============================================================ -->
+    <mxCell id="security_box" value="⚠️  INTERNET-EXPOSED PORTS (3 critical)&lt;br&gt;:4000 LiteLLM  |  :8080 Dashboard  |  :9000 Portainer&lt;br&gt;Action: ufw block all three — sudo required — 15 min fix" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="400" y="1600" width="900" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!-- LEGEND -->
+    <!-- ============================================================ -->
+    <mxCell id="legend" value="LEGEND" style="swimlane;startSize=25;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="1360" y="1560" width="800" height="130" as="geometry" />
+    </mxCell>
+
+    <mxCell id="leg1" value="Green = Healthy / Active" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="legend">
+      <mxGeometry x="20" y="35" width="170" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="leg2" value="Orange = Degraded / Warning" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="legend">
+      <mxGeometry x="210" y="35" width="170" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="leg3" value="Red = Broken / Dead / Risk" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="legend">
+      <mxGeometry x="400" y="35" width="170" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="leg4" value="Blue = Observability" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="legend">
+      <mxGeometry x="590" y="35" width="170" height="30" as="geometry" />
+    </mxCell>
+
+    <mxCell id="leg5" value="Dashed arrow = broken/unused flow   |   Solid arrow = active flow   |   ⚠️ = needs fix   |   ❌ = dead/missing" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="legend">
+      <mxGeometry x="20" y="80" width="750" height="30" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>
