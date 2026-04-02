@@ -1,0 +1,248 @@
+<mxGraphModel dx="1400" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <!-- Title -->
+    <mxCell id="2" value="AKASHA — Memory Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#1a1a2e;" vertex="1" parent="1">
+      <mxGeometry x="400" y="20" width="600" height="30" as="geometry"/>
+    </mxCell>
+
+    <!-- MAC ZONE -->
+    <mxCell id="3" value="MAC（執行端）" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="70" width="400" height="760" as="geometry"/>
+    </mxCell>
+
+    <!-- User -->
+    <mxCell id="4" value="使用者" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="165" y="110" width="120" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- Shell Wrappers -->
+    <mxCell id="5" value="Shell Wrappers&#xa;claude-akasha / codex-akasha / gemini-akasha" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="85" y="200" width="280" height="55" as="geometry"/>
+    </mxCell>
+
+    <!-- detect_project.py -->
+    <mxCell id="6" value="detect_project.py&#xa;$PWD → project name" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="85" y="295" width="280" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- pre_session.py -->
+    <mxCell id="7" value="pre_session.py&#xa;GET /context → 100.123.49.102:7700" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="85" y="385" width="280" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- session-seed.md -->
+    <mxCell id="8" value="session-seed.md&#xa;project / decisions / progress / next_steps" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fffacd;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="110" y="475" width="230" height="60" as="geometry"/>
+    </mxCell>
+
+    <!-- CLAUDE.md -->
+    <mxCell id="9" value="CLAUDE.md&#xa;習慣（靜態）+ @include session-seed.md" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fffacd;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="110" y="575" width="230" height="55" as="geometry"/>
+    </mxCell>
+
+    <!-- Agents -->
+    <mxCell id="10" value="Claude Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="670" width="100" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="11" value="Codex CLI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="175" y="670" width="100" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="12" value="Gemini CLI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="290" y="670" width="100" height="45" as="geometry"/>
+    </mxCell>
+
+    <!-- post_session.py -->
+    <mxCell id="13" value="post_session.py (trap EXIT)&#xa;9-seg JSON block → POST /memory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="85" y="755" width="280" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- ALAYA ZONE -->
+    <mxCell id="14" value="ALAYA（記憶端）  100.123.49.102" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="500" y="70" width="860" height="760" as="geometry"/>
+    </mxCell>
+
+    <!-- Rust Harness box -->
+    <mxCell id="15" value="Rust Harness (Axum 0.8)  :7700" style="swimlane;startSize=28;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="520" y="110" width="560" height="480" as="geometry"/>
+    </mxCell>
+
+    <!-- GET /context -->
+    <mxCell id="16" value="GET /context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="540" y="160" width="150" height="45" as="geometry"/>
+    </mxCell>
+
+    <!-- POST /memory -->
+    <mxCell id="17" value="POST /memory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="910" y="160" width="150" height="45" as="geometry"/>
+    </mxCell>
+
+    <!-- query_engine -->
+    <mxCell id="18" value="query_engine.rs&#xa;GIN tag filter&#xa;BM25 fulltext (ParadeDB)&#xa;RRF merge ranking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="540" y="250" width="170" height="85" as="geometry"/>
+    </mxCell>
+
+    <!-- registry -->
+    <mxCell id="19" value="registry.rs&#xa;共現圖 tag 擴充&#xa;parity_audit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="730" y="250" width="150" height="85" as="geometry"/>
+    </mxCell>
+
+    <!-- bootstrap -->
+    <mxCell id="20" value="bootstrap.rs&#xa;Redis 預載管理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="900" y="250" width="150" height="85" as="geometry"/>
+    </mxCell>
+
+    <!-- compactor -->
+    <mxCell id="21" value="compactor.rs&#xa;9-segment 解析&#xa;chunks 寫入 PG" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="900" y="380" width="150" height="80" as="geometry"/>
+    </mxCell>
+
+    <!-- pool / permission -->
+    <mxCell id="22" value="pool.rs&#xa;deadpool-postgres" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="540" y="460" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="23" value="permission.rs&#xa;（預留）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+      <mxGeometry x="710" y="460" width="150" height="60" as="geometry"/>
+    </mxCell>
+
+    <!-- Redis Queue note -->
+    <mxCell id="24" value="Redis Queue&#xa;background worker 消費" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="900" y="460" width="150" height="60" as="geometry"/>
+    </mxCell>
+
+    <!-- PostgreSQL box -->
+    <mxCell id="25" value="akasha-postgres (ParadeDB)" style="swimlane;startSize=28;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="520" y="620" width="380" height="180" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="26" value="chunks&#xa;project / segment / tags[] / content&#xa;hit_count / created_at&#xa;← GIN index on tags, BM25 on content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="530" y="660" width="180" height="120" as="geometry"/>
+    </mxCell>
+    <mxCell id="27" value="execution_registry&#xa;project / tags_used[]&#xa;chunks_hit[] / chunks_used[]&#xa;&#xa;bootstrap_snapshots&#xa;project / content（固定預載）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="720" y="660" width="170" height="120" as="geometry"/>
+    </mxCell>
+
+    <!-- Redis box -->
+    <mxCell id="28" value="akasha-redis (redis:7-alpine)" style="swimlane;startSize=28;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="930" y="620" width="410" height="180" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="29" value="bootstrap:{project}&#xa;session 啟動預載（永久）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="940" y="660" width="185" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="30" value="context:{tags_hash}&#xa;查詢結果快取（1h TTL）&#xa;Write Queue（background）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1135" y="660" width="185" height="60" as="geometry"/>
+    </mxCell>
+
+    <!-- Daily cron note -->
+    <mxCell id="31" value="daily cron 03:00&#xa;parity_audit" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="1115" y="790" width="140" height="45" as="geometry"/>
+    </mxCell>
+
+    <!-- migrate.py -->
+    <mxCell id="32" value="migrate.py (一次性)&#xa;memory/ → PostgreSQL chunks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontStyle=2;" vertex="1" parent="1">
+      <mxGeometry x="930" y="110" width="200" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- EDGES -->
+    <!-- User → wrapper -->
+    <mxCell id="40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="4" target="5" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- wrapper → detect -->
+    <mxCell id="41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="5" target="6" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- detect → pre_session -->
+    <mxCell id="42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="6" target="7" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- pre_session → seed -->
+    <mxCell id="43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="7" target="8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- seed → CLAUDE.md -->
+    <mxCell id="44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;dashed=1;" edge="1" source="8" target="9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- CLAUDE.md → Claude Code -->
+    <mxCell id="45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="9" target="10" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- seed → Codex/Gemini (wrapper prepend) -->
+    <mxCell id="46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;dashed=1;" edge="1" source="8" target="11" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;dashed=1;" edge="1" source="8" target="12" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- Agents → post_session -->
+    <mxCell id="48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="10" target="13" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="11" target="13" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="12" target="13" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- pre_session → GET /context (cross zone) -->
+    <mxCell id="51" value="GET /context" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;strokeColor=#0066cc;fontColor=#0066cc;fontSize=10;" edge="1" source="7" target="16" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- post_session → POST /memory (cross zone) -->
+    <mxCell id="52" value="POST /memory" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;strokeColor=#cc0000;fontColor=#cc0000;fontSize=10;" edge="1" source="13" target="17" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- GET /context → query_engine -->
+    <mxCell id="53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="16" target="18" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- query_engine → registry -->
+    <mxCell id="54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="18" target="19" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- registry → bootstrap -->
+    <mxCell id="55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="19" target="20" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- POST /memory → compactor -->
+    <mxCell id="56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="17" target="24" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" edge="1" source="24" target="21" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- query_engine → PostgreSQL -->
+    <mxCell id="58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;strokeColor=#82b366;" edge="1" source="18" target="26" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- compactor → PostgreSQL -->
+    <mxCell id="59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;strokeColor=#82b366;" edge="1" source="21" target="27" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- bootstrap → Redis -->
+    <mxCell id="60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;strokeColor=#b85450;" edge="1" source="20" target="29" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- Redis hit → query_engine (cache) -->
+    <mxCell id="61" value="cache hit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;dashed=1;strokeColor=#b85450;fontColor=#b85450;fontSize=10;" edge="1" source="30" target="16" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1220" y="400"/>
+          <mxPoint x="615" y="400"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <!-- parity_audit → registry -->
+    <mxCell id="62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;dashed=1;strokeColor=#d6b656;" edge="1" source="31" target="19" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+  </root>
+</mxGraphModel>
